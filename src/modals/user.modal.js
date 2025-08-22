@@ -41,11 +41,11 @@ userSchema.methods.isPasswordMatched = async function (enteredPassword) {
 }
 
 userSchema.methods.generateAccessToken = function () {
-    return jwt.sign({ id: this._id }, process.env.ACCESS_TOKEN_KEY, { expiresIn: "1h" });
+    return jwt.sign({ _id: this._id }, process.env.ACCESS_TOKEN_KEY, { expiresIn: "1h" });
 };
 
 userSchema.methods.generateRefreshToken = function () {
-    return jwt.sign({ id: this._id }, process.env.REFRESH_TOKEN_KEY, { expiresIn: "1d" });
+    return jwt.sign({ _id: this._id }, process.env.REFRESH_TOKEN_KEY, { expiresIn: "1d" });
 };
 
 export const User = mongoose.model("User", userSchema)
