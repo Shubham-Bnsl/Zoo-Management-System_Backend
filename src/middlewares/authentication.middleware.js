@@ -8,7 +8,7 @@ try {
         const {accessToken} = req.cookies;
     
         if(!accessToken){
-            return next(errorHandler(401,"Unauthorized"))
+            return next(errorHandler(401,"please login first"))
         }
     
         const decoded = jwt.verify(accessToken, process.env.ACCESS_TOKEN_KEY);
